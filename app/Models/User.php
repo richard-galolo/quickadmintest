@@ -6,6 +6,7 @@ use App\Support\HasAdvancedFilter;
 use Carbon\Carbon;
 use DateTimeInterface;
 use Hash;
+use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Contracts\Translation\HasLocalePreference;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -13,7 +14,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
-class User extends Authenticatable implements HasLocalePreference
+class User extends Authenticatable implements HasLocalePreference, MustVerifyEmail
 {
     use HasFactory, HasAdvancedFilter, Notifiable, SoftDeletes;
 

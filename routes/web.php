@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\Admin\FaqCategoryController;
+use App\Http\Controllers\Admin\FaqQuestionController;
 use App\Http\Controllers\Admin\HomeController;
 use App\Http\Controllers\Admin\PermissionController;
 use App\Http\Controllers\Admin\RoleController;
@@ -10,9 +12,9 @@ use Illuminate\Support\Facades\Route;
 
 Route::redirect('/', '/login');
 
-Auth::routes(['register' => false]);
+Auth::routes(['verify' => true]);
 
-Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => ['auth']], function () {
+Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => ['auth', 'verified']], function () {
     Route::get('/', [HomeController::class, 'index'])->name('home');
 
     // Permissions
@@ -23,6 +25,12 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => ['auth']], 
 
     // Users
     Route::resource('users', UserController::class, ['except' => ['store', 'update', 'destroy']]);
+
+    // Faq Category
+    Route::resource('faq-categories', FaqCategoryController::class, ['except' => ['store', 'update', 'destroy']]);
+
+    // Faq Question
+    Route::resource('faq-questions', FaqQuestionController::class, ['except' => ['store', 'update', 'destroy']]);
 });
 
 Route::group(['prefix' => 'profile', 'as' => 'profile.', 'middleware' => ['auth']], function () {
