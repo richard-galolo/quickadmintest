@@ -22,7 +22,11 @@
                 </div>
             </div>
 
-
+            <form class="mt-6 mb-4 md:hidden">
+                <div class="mb-3 pt-0">
+                    @livewire('global-search')
+                </div>
+            </form>
 
             <!-- Divider -->
             <div class="flex md:hidden">
@@ -73,6 +77,35 @@
                                         <i class="fa-fw c-sidebar-nav-icon fas fa-user">
                                         </i>
                                         {{ trans('cruds.user.title') }}
+                                    </a>
+                                </li>
+                            @endcan
+                        </ul>
+                    </li>
+                @endcan
+                @can('faq_management_access')
+                    <li class="items-center">
+                        <a class="has-sub {{ request()->is("admin/faq-categories*")||request()->is("admin/faq-questions*") ? "sidebar-nav-active" : "sidebar-nav" }}" href="#" onclick="window.openSubNav(this)">
+                            <i class="fa-fw fas c-sidebar-nav-icon fa-question">
+                            </i>
+                            {{ trans('cruds.faqManagement.title') }}
+                        </a>
+                        <ul class="ml-4 subnav hidden">
+                            @can('faq_category_access')
+                                <li class="items-center">
+                                    <a class="{{ request()->is("admin/faq-categories*") ? "sidebar-nav-active" : "sidebar-nav" }}" href="{{ route("admin.faq-categories.index") }}">
+                                        <i class="fa-fw c-sidebar-nav-icon fas fa-briefcase">
+                                        </i>
+                                        {{ trans('cruds.faqCategory.title') }}
+                                    </a>
+                                </li>
+                            @endcan
+                            @can('faq_question_access')
+                                <li class="items-center">
+                                    <a class="{{ request()->is("admin/faq-questions*") ? "sidebar-nav-active" : "sidebar-nav" }}" href="{{ route("admin.faq-questions.index") }}">
+                                        <i class="fa-fw c-sidebar-nav-icon fas fa-question">
+                                        </i>
+                                        {{ trans('cruds.faqQuestion.title') }}
                                     </a>
                                 </li>
                             @endcan

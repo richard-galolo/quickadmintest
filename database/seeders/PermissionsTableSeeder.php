@@ -78,6 +78,50 @@ class PermissionsTableSeeder extends Seeder
                 'id'    => 17,
                 'title' => 'user_access',
             ],
+            [
+                'id'    => 18,
+                'title' => 'faq_management_access',
+            ],
+            [
+                'id'    => 19,
+                'title' => 'faq_category_create',
+            ],
+            [
+                'id'    => 20,
+                'title' => 'faq_category_edit',
+            ],
+            [
+                'id'    => 21,
+                'title' => 'faq_category_show',
+            ],
+            [
+                'id'    => 22,
+                'title' => 'faq_category_delete',
+            ],
+            [
+                'id'    => 23,
+                'title' => 'faq_category_access',
+            ],
+            [
+                'id'    => 24,
+                'title' => 'faq_question_create',
+            ],
+            [
+                'id'    => 25,
+                'title' => 'faq_question_edit',
+            ],
+            [
+                'id'    => 26,
+                'title' => 'faq_question_show',
+            ],
+            [
+                'id'    => 27,
+                'title' => 'faq_question_delete',
+            ],
+            [
+                'id'    => 28,
+                'title' => 'faq_question_access',
+            ],
         ];
 
         Permission::insert($permissions);
